@@ -1,0 +1,10 @@
+@keyframes hoverLi {
+    0% {
+        height: 0.1%;
+    }
+    100% {
+        color: #6d5c5c;
+        height: 2%;
+        box-shadow: #6d5c5c 0 0 8px 0;
+    }
+}

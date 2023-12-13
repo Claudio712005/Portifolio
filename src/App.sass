@@ -1,0 +1,22 @@
+@mixin adjust()
+    width:100%
+    display:flex
+    padding: 0px
+    margin: 0px
+
+body
+    @include adjust()
+    height: 1500px
+
+#root
+    height: 100%
+    
+.App
+    @include adjust()
+    height: 100%
+
+.App-header
+    @include adjust()
+    height: 100%
+    flex-direction: column
+            

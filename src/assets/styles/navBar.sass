@@ -1,0 +1,71 @@
+@import './animation/animation.css'
+@import './fonts/fonts.sass'
+
+nav
+    display: flex 
+    width: 100%
+    background-color: #000
+    align-items: center
+    justify-content: center
+    height: 3%
+    cursor: default
+
+    h1
+        font-size: 17px
+        color: $nav_bar_font_color
+        font-family: $nav_bar_font_name_h1
+        letter-spacing: 7px
+        margin-right: 15%
+
+    ul
+        width: 30%
+        display: flex
+        align-itens: center
+        justify-content: center
+        gap: 10%
+        height: 60%
+        padding: 0
+        margin: 0
+        margin-left: 20%
+        list-style: none
+        color: #fff
+        border-right: 1px solid #fff
+
+        li
+            color: $nav_bar_font_color
+            font-family: $nav_bar_font_name
+            font-size: $nav_bar_font_size
+            font-weight: $nav_bar_font_weight
+            align-items: center
+            display: flex
+            cursor: pointer
+            justify-content: center
+            width: 12%
+            background-color: black
+            z-index: 1
+
+            &:after 
+                content: ''
+                position: absolute
+                background-color: red
+                width: 4.5%
+                height: 0.1%
+                margin-top: 1%
+                transition: all ease-in-out 0.5s
+                z-index: -1
+
+            &:hover:after 
+                height: 2%
+                margin-top: 0.1%
+                animation: hoverLi 0.5s linear
+
+    .icons-midia
+        width: 10%
+        display: flex
+        align-items: center
+        justify-content: center
+        gap: 10%
+
+        i
+            color: $nav_bar_font_color
+            cursor: pointer
