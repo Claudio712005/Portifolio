@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../assets/styles/home.sass'
+import imgDevPng from '../assets/images/398679bb-a7e4-44df-9479-dc11058676f0.png'
 
 function HomePage() {
     const [resultado, setDadosDoBanco] = useState([]);
@@ -30,9 +31,28 @@ function HomePage() {
 
     return (
         <div className='pagina-principal'>
-            {erroNaSolicitacao ? (<p>Ocorreu um erro na solicitação.</p>) : 
-                (resultado.length > 0 && (<h2>Olá {resultado[0][1]} você está na HOME, seu Email é : {resultado[0][4]}</h2>))
-            }
+            <div className='first-content'>
+                <div className="left-first-content">
+                    <h1><span>{erroNaSolicitacao ? ('') : (resultado.length > 0 && (resultado[0][2]))}</span><span>{erroNaSolicitacao ? ('') : (resultado.length > 0 && (resultado[0][3]))};</span></h1>
+                    <button>BAIXAR CURRÍCULO <i class="fa-solid fa-download"></i></button>
+                    <h6>Baixe agora meu currículo e descubra as experiências que estão moldando minha jornada.</h6>
+                </div>
+                <div className="center-first-content">
+                    <img src={imgDevPng} alt="dev-img" />
+                </div>
+                <div className="right-first-content">
+                    <div className="box">
+                        
+                    </div>
+                    <div className="box">
+                        
+                    </div>
+                    <div className="box">
+                        
+                    </div>
+                </div>
+            </div>
+            <div className="second-content"></div>
         </div>
     );
 }

@@ -1,6 +1,165 @@
+@import './fonts/fonts.sass'
+    
+@mixin content()
+    width: 100%
+    height: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 3.5%
+
+@mixin child-content()
+    width: 30%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+
+@mixin name-dev-before-and-after()
+    content: ''
+    position: absolute
+    background-color: #1f91a8
+    width: 5%
+    height: 0.2%                                                
+    box-shadow: #1f91a8 0 0 7px 0 
+
+@mixin floatAnimation()
+    animation: floatingMove 5.0s ease-in-out infinite
+
+    
 .pagina-principal
     width: 100%
-    height: 30%
+    height: 97%
     display: flex
     align-itens: center
     flex-direction: column
+
+    .first-content
+        @include content()
+
+        .left-first-content
+            @include child-content()
+
+            h1
+                color: #fff
+                font-family: $first_content_name_dev_font_name
+                display: flex
+                align-items: center 
+                flex-direction: column
+
+                span:nth-child(1)
+                    font-size: 60px
+                    margin-right: 10%
+
+                    &:after
+                      left: 10%
+                      top: 30%
+                      @include name-dev-before-and-after()
+                    
+                    &:before
+                      left: 20%
+                      bottom: 45%
+                      @include name-dev-before-and-after()
+
+                span:nth-child(2)
+                    font-size: 50px
+                    margin-left: 30%
+            
+            button
+                background-color: #08557f63
+                border: 1px solid #fff
+                box-shadow: #1f91a8 0 0 6px 0
+                color: $nav_bar_font_color
+                width: 50%
+                height: 10%
+                cursor: pointer
+                margin-top: 15%
+                font-family: $first_content_button_font_name
+                transition: all ease-in-out 0.3s
+
+                &:hover
+                    width: 51%
+                    height: 10.5%
+                    background-color: #0a649563
+                    font-weight: 600
+                    border-radius: 0.5rem
+                    font-size: 15px
+                
+                i
+                    margin-left: 4%
+
+            h6
+                font-family: $first_content_button_subtitle_font_name
+                color: #fff
+                font-size: $first_content_button_subtitle_font_size
+                width: 50%
+                text-align: justify
+            
+        .center-first-content
+            @include child-content()
+
+            &:after
+                content: ''
+                position: absolute
+                background: rgb(6,112,159)
+                background: linear-gradient(48deg, rgba(6,112,159,1) 35%, rgba(15,169,200,1) 100%)
+                height: 80%
+                width: 35%
+                border-radius: 80% 90% 70% 50%
+                bottom: 2%
+                z-index: -1
+                animation-name: ani-rotate
+                animation-duration: 55s
+                animation-timing-function: ease-in-out
+                animation-delay: 0s
+                animation-iteration-count: infinite
+                animation-direction: normal
+                animation-fill-mode: none
+        
+            img
+                height: 95%
+                border-bottom: 2px solid #1f91a8
+                filter: grayscale(1)
+                z-index: 1
+
+        .right-first-content
+            @include child-content()
+            gap: 5%
+
+            .box
+                width: 70%
+                height: 25%
+                border-radius: 0.6rem
+                background-color: #0a649563
+                display: flex
+                flex-direction: column
+                align-items: center
+                position: relative
+
+                &:after
+                    content: ''
+                    position: absolute
+                    width: 50%
+                    height: 50%
+                    border-radius: 90% 20% 5% 10%
+                    border-top: 10px solid #1f91a8
+                    right: 55%
+                    bottom: 55%
+                    @include floatAnimation()
+
+                &:before
+                    content: ''
+                    position: absolute
+                    width: 50%
+                    height: 50%
+                    border-radius: 5% 10% 90% 20%
+                    border-bottom: 10px solid #1f91a8
+                    right: -5%
+                    bottom: -9.7%
+                    @include floatAnimation()
+        
+    .second-content
+        @include content()
+        
+    

@@ -8,3 +8,24 @@
         box-shadow: #6d5c5c 0 0 8px 0;
     }
 }
+
+@keyframes ani-rotate {
+    0%{ 
+        transform: rotate(0);
+    }
+    100%{ 
+        transform: rotate(360deg); 
+    }  
+}
+
+@keyframes floatingMove {
+    0%{
+        scale: 1;
+    }
+    50%{
+        scale: 1.03;
+    }
+    100%{
+        scale: 1;
+    }
+}
