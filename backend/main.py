@@ -1,25 +1,45 @@
-from flask import Flask, request, redirect, url_for, jsonify
+from flask import Flask, jsonify, g
 from flask_cors import CORS
+import mysql.connector
 
 app = Flask(__name__)
 CORS(app, origins="http://localhost:3000")
 
-import mysql.connector
+def get_db():
+    if 'db' not in g:
+        g.db = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="54157592808",
+            database="portifolio"
+        )
+    return g.db
 
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="54157592808",
-    database="portifolio"
-)
-cursor = db.cursor()
+@app.teardown_appcontext
+def close_db(error):
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
 
 @app.route('/api/dados', methods=['GET'])
 def index():
-    cursor.execute("SELECT  dev.idDev, dev.nomeCompleto, dev.primeiroNome, dev.sobrenome, dev.dtNasc, dev.sexo, dev.email, urlMidia.nomeMidia, urlMidia.tipo AS tipoMidia, urlMidia.posse, urlMidia.url AS urlMidia, endereco.pais, endereco.estado, endereco.cidade, endereco.bairro, endereco.rua, linguagens.tipo AS tipoLinguagem, linguagens.nivelExperiencia, linguagens.nome AS nomeLinguagem, projetos.nomeProjeto, projetos.dtCriacao AS dtCriacaoProjeto, projetos.dificuldade, projetos.coletividade, linguagemProjeto.uso AS usoLinguagemProjeto, urlMidia.url AS urlMidiaProjeto FROM dev LEFT JOIN urlMidia ON dev.idDev = urlMidia.fkDev LEFT JOIN endereco ON dev.idDev = endereco.fkDev LEFT JOIN linguagens ON dev.idDev = linguagens.fkDev LEFT JOIN projetos ON dev.idDev = projetos.fkDev LEFT JOIN linguagemProjeto ON linguagens.idLinguagem = linguagemProjeto.fkLinguagem AND projetos.idProjeto = linguagemProjeto.fkProjeto LEFT JOIN midiaProjeto ON urlMidia.idMidia = midiaProjeto.fkUrls AND projetos.idProjeto = midiaProjeto.fkProjeto;")
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM dev;")
     data = cursor.fetchall()
-    
+    cursor.close()
+
     return jsonify(data)
+
+@app.route('/api/linguagens', methods=['GET'])
+def linguagens():
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM linguagens;")
+    dados = cursor.fetchall()
+    cursor.close()
+
+    return jsonify(dados)
 
 if __name__ == '__main__':
     app.run(port=8080)
