@@ -14,9 +14,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+# backend_portifolio/urls.py
+
+from django.contrib import admin  # Adicione essa linha para importar 'admin'
+from django.urls import path, re_path
+from django.views.generic import RedirectView
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/dados', views.consultar_devs, name='infos'),
+    re_path(r'^$', RedirectView.as_view(url='/pagina-padrao/')),  # Redireciona para '/pagina-padrao/'
 ]
