@@ -1,1 +1,14 @@
-node_modules
+# Django
+*.pyc
+__pycache__/
+venv/
+env/
+media/
+staticfiles/
+local_settings.py
+*.sqlite3
+*.db
+Pipfile.lock
+
+# Node.js
+node_modules/

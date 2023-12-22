@@ -26,32 +26,6 @@
 
 @mixin floatAnimation()
     animation: floatingMove 5.0s ease-in-out infinite
-
-.cursor
-    position: absolute
-    width: 0.8%
-    position: fixed
-    height: 1.6%
-    background-color: #0b465c
-    border-radius: 80% 90% 70% 50%
-    z-index: 2
-    transform: translate(-50% -50%)
-    transition: opacity ease-in-out 0.5s
-    opacity: 1
-    animation-name: ani-rotate
-    animation-duration: 55s
-    animation-timing-function: ease-in-out
-    animation-iteration-count: infinite
-
-    &:after
-        content: ''
-        position: absolute
-        background-color: #215d696e
-        border-radius: 100%
-        z-index: -1
-        height: 110%
-        width: 110%
-        box-shadow: #1f91a8 0 0 10px 0
     
 .pagina-principal
     width: 100%
@@ -211,6 +185,7 @@
                 h2
                     font-family: $first_content_name_dev_font_name
                     color: $nav_bar_font_color
+                    cursor: pointer
 
                     &::after
                         position: absolute

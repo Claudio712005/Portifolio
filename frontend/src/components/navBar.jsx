@@ -1,8 +1,10 @@
 import '../assets/styles/navBar.sass'
 
 function Navbar({ onChangePage }) {
+
     return (
-        <nav>
+        <nav id='nav_bar'>
+            <div className="cursor"></div>
             <h1 id='name'>CLÁUDIO ARAÚJO</h1>
             <ul>
                 <li onClick={() => onChangePage('home')}>HOME</li>
