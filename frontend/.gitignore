@@ -1,14 +1,20 @@
-# Django
 *.pyc
 __pycache__/
+
 venv/
 env/
+
+*.pyo
+*.pyc
+*.pyd
+
 media/
+
 staticfiles/
+
 local_settings.py
+
 *.sqlite3
 *.db
-Pipfile.lock
 
-# Node.js
 node_modules/
